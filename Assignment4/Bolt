@@ -1,0 +1,34 @@
+/*
+ * This class is checking if the finish is valid and passing length, diameter, material, finish, price, and unit to the OuterThreaded class
+ */
+public class Bolt extends OuterThreaded {
+	
+	private static final long serialVersionUID = 1L;
+
+	//Passing the length, diameter, material, finish, price, unit to the OuterThreaded class
+	public Bolt(double length, String diameter, String material, String finish, double price, int unit) throws IllegalFastener {
+		super(length, diameter, material, finish, price, unit); 
+		checkFinish(finish, material); 
+	}
+	
+	//Checking if the finish is valid
+	private void checkFinish(String finish, String material) throws IllegalFastener{
+		String[] legalFinish = {"Chrome", "Hot Dipped Galvanized", "Plain", "Yellow Zinc", "Zinc"}; 
+		if (material.equalsIgnoreCase("Steel")) {
+			if (!inArray(legalFinish, finish)) {
+				throw new IllegalFastener("Illegal finish"); 
+			}
+		}
+		else if (! finish.equalsIgnoreCase("Plain")) {
+				throw new IllegalFastener("Invalid finish"); 
+		}
+	}
+	
+	//Assigning a string output
+	public String toString() {
+		String output; 
+		output = super.toString(); 
+		return output; 
+	}
+	
+}
